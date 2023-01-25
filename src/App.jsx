@@ -33,41 +33,23 @@ function ProductsNew() {
   );
 }
 
-function ProductsIndex() {
-  const [products, setProdcuts] = useState([
-    {
-      id: 1,
-      name: "___",
-      price: "___",
-      description: "___",
-      inventory: "___",
-    },
-    {
-      id: 2,
-      name: "___",
-      price: "___",
-      description: "___",
-      inventory: "___",
-    },
-    {
-      id: 3,
-      name: "___",
-      price: "___",
-      description: "___",
-      inventory: "___",
-    },
-  ]);
+function ProductsIndex(props) {
 
   return (
     <div id="products-index">
       <h1>All Products</h1>
 
-      
-
-
+      {props['products'].map(product => (
+        <div className="products" key={product.id}>
+          <h2>{product.name}</h2>
+          <p>{product.price}</p>
+          <p>{product.description}</p>
+          <p>{product.inventory}</p>
+        </div>
+      ))}
 
     </div>
-  )
+  );
 
 }
 
@@ -80,6 +62,8 @@ function Footer() {
 }
 
 function Content() {
+  const [products, setProdcuts] = useState([]);
+ 
   return (
     <div>
       <ProductsNew />
